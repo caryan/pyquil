@@ -29,7 +29,10 @@ import numpy as np
 import sys
 import struct
 import pyquil.quil as pq
-import ConfigParser
+try:
+    import ConfigParser
+except ImportError:
+    import configparser as ConfigParser
 
 USER_HOMEDIR = os.path.expanduser("~")
 
