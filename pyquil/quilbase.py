@@ -569,7 +569,7 @@ class Instr(AbstractInstruction):
     """
 
     def __init__(self, op, params, args):
-        if not isinstance(op, (str, unicode)):
+        if not (isinstance(op, str) or isinstance(op, unicode)):
             raise TypeError("op must be a string")
         self.operator_name = op
         self.parameters = params
