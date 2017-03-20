@@ -50,7 +50,7 @@ class ParametricProgram(object):
 
     def __init__(self, program_constructor):
         self.num_arguments = argument_count(program_constructor)
-        self.slots = [Slot() for _ in xrange(self.num_arguments)]
+        self.slots = [Slot() for _ in range(self.num_arguments)]
         self.instantiated_program = program_constructor(*self.slots)
         if not isinstance(self.instantiated_program, Program):
             raise TypeError("program_constructor should produce a Program object")

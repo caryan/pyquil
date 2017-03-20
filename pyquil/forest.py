@@ -192,7 +192,7 @@ def _octet_bits(o):
     if not (0 <= o <= 255):
         raise ValueError("o should be between 0 and 255 inclusive")
     bits = [0] * 8
-    for i in xrange(8):
+    for i in range(8):
         if 1 == o & 1:
             bits[i] = 1
         o = o >> 1

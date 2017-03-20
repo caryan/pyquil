@@ -10,8 +10,8 @@ import numpy as np
 @pytest.fixture
 def five_qubit_prog():
     p = pq.Program()
-    qubits = [p.alloc() for _ in xrange(5)]
     p.inst(map(H, qubits))
+    qubits = [p.alloc() for _ in range(5)]
     return p, qubits
 
 

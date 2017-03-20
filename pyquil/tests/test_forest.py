@@ -72,7 +72,7 @@ def test_dont_add_rng_seed_to_payload():
 
 
 def test_rounding():
-    for i in xrange(8):
+    for i in range(8):
         if 0 == i % 8:
             assert i == qvm._round_to_next_multiple(i, 8)
         else:

@@ -34,10 +34,10 @@ def die_program(n):
     prog = pq.Program()
     qubits = qubits_needed(n)
     # Hadamard initialize.
-    for q in xrange(qubits):
+    for q in range(qubits):
         prog.inst(H(q))
     # Measure everything.
-    for q in xrange(qubits):
+    for q in range(qubits):
         prog.measure(q, [q])
     return prog
 

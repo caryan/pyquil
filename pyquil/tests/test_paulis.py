@@ -36,16 +36,16 @@ def compare_progs(test, reference):
     tinstr = test.actions
     rinstr = reference.actions
     assert len(tinstr) == len(rinstr)
-    for idx in xrange(len(tinstr)):
+    for idx in range(len(tinstr)):
         # check each field of the instruction object
         assert tinstr[idx][1].operator_name == rinstr[idx][1].operator_name
         assert len(tinstr[idx][1].parameters) == len(rinstr[idx][1].parameters)
-        for pp in xrange(len(tinstr[idx][1].parameters)):
+        for pp in range(len(tinstr[idx][1].parameters)):
             cmp_val = isclose(tinstr[idx][1].parameters[pp], rinstr[idx][1].parameters[pp])
             assert cmp_val
 
         assert len(tinstr[idx][1].arguments) == len(rinstr[idx][1].arguments)
-        for aa in xrange(len(tinstr[idx][1].arguments)):
+        for aa in range(len(tinstr[idx][1].arguments)):
             assert tinstr[idx][1].arguments[aa] == rinstr[idx][1].arguments[aa]
 
 
@@ -399,9 +399,8 @@ def test_check_commutation():
 
     non_commuting_pairs = []
     commuting_pairs = []
-    for x in xrange(len(pauli_ops_pq)):
-        for y in xrange(x, len(pauli_ops_pq)):
-
+    for x in range(len(pauli_ops_pq)):
+        for y in range(x, len(pauli_ops_pq)):
             tmp_op = commutator(pauli_ops_pq[x], pauli_ops_pq[y])
             assert len(tmp_op.terms) == 1
             if tmp_op.terms[0].id() == '':

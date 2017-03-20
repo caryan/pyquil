@@ -360,9 +360,9 @@ def commuting_sets(pauli_terms, nqubits):
     m_s = 1
     groups = []
     groups.append([pauli_terms.terms[0]])
-    for j in xrange(1, m_terms):
+    for j in range(1, m_terms):
         isAssigned_bool = False
-        for p in xrange(m_s):  # check if it commutes with each group
+        for p in range(m_s):  # check if it commutes with each group
             if isAssigned_bool is False:
 
                 if check_commutation(groups[p], pauli_terms.terms[j]):
