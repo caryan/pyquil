@@ -34,6 +34,8 @@ try:
 except ImportError:
     import configparser as ConfigParser
 
+from builtins import int
+
 USER_HOMEDIR = os.path.expanduser("~")
 
 PYQUIL_CONFIG_PATH = os.getenv('PYQUIL_CONFIG', os.path.join(USER_HOMEDIR, ".pyquil_config"))
@@ -187,7 +189,7 @@ def _octet_bits(o):
     :return: The bits as a list in LSB-to-MSB order.
     :rtype: list
     """
-    if not isinstance(o, (int, long)):
+    if not isinstance(o, int):
         raise TypeError("o should be an int or long")
     if not (0 <= o <= 255):
         raise ValueError("o should be between 0 and 255 inclusive")
@@ -269,7 +271,7 @@ class Connection(object):
 
         if random_seed is None:
             self.random_seed = None
-        elif isinstance(random_seed, (int, long)) and random_seed >= 0:
+        elif isinstance(random_seed, int) and random_seed >= 0:
             self.random_seed = random_seed
         else:
             raise TypeError("random_seed should be None or a non-negative int or long.")

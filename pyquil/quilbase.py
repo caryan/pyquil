@@ -26,6 +26,9 @@ from pyquil.resource_manager import AbstractQubit, DirectQubit, Qubit, \
     ResourceManager, check_live_qubit, merge_resource_managers
 
 allow_raw_instructions = True
+
+from builtins import int
+
 """
 Allow constructing programs containing raw instructions.
 """
@@ -60,7 +63,7 @@ def format_matrix_element(element):
 
     :param element: {int, long, float, complex, str} The parameterized element to format.
     """
-    if isinstance(element, (int, long, float, complex)):
+    if isinstance(element, (int, float, complex)):
         return format_parameter(element)
     elif isinstance(element, str):
         return element
@@ -76,8 +79,8 @@ def format_parameter(element):
     """
     if isinstance(element, (int, float)):
         return repr(element)
-    elif isinstance(element, long):
-        return repr(element)[0:-1]
+    # elif isinstance(element, long):
+    #     return repr(element)[0:-1]
     elif isinstance(element, complex):
         r = element.real
         i = element.imag
