@@ -23,7 +23,8 @@ from pyquil.quil import Program
 from pyquil.gates import RX, RZ, CNOT, H, X, PHASE
 import math
 from itertools import product
-
+from functools import reduce
+from operator import mul
 
 def isclose(a, b, rel_tol=1e-10, abs_tol=0.0):
     return abs(a - b) <= max(rel_tol * max(abs(a), abs(b)), abs_tol)
@@ -389,10 +390,7 @@ def test_check_commutation():
     pauli_ops = map(lambda x: zip(x, range(3)), pauli_list)
     pauli_ops_pq = []
     for op in pauli_ops:
-        pauli_ops_pq.append(reduce(lambda x, y: x * PauliTerm(y[0], y[1]),
-                                   op[1:],
-                                   PauliTerm(op[0][0], op[0][1]))
-                            )
+        pauli_ops_pq.append(reduce(mul, map(lambda x : PauliTerm(*x), op)))
 
     def commutator(t1, t2):
         return t1 * t2 + -1 * t2 * t1
