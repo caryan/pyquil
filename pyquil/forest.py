@@ -347,8 +347,8 @@ class Connection(object):
 
             # Parse the classical memory
             mem = []
-            for i in xrange(num_memory_octets):
-                octet = struct.unpack('B', coef_string[i])[0]
+            for i in range(num_memory_octets):
+                octet = struct.unpack('B', bytes([coef_string[i]]))[0]
                 mem.extend(_octet_bits(octet))
 
             mem = mem[0:num_addresses]
@@ -358,8 +358,8 @@ class Connection(object):
             for i, p in enumerate(range(num_memory_octets, num_octets, OCTETS_PER_COMPLEX_DOUBLE)):
                 re_be = coef_string[p: p + OCTETS_PER_DOUBLE_FLOAT]
                 im_be = coef_string[p + OCTETS_PER_DOUBLE_FLOAT: p + OCTETS_PER_COMPLEX_DOUBLE]
-                re = struct.unpack('>d', re_be)[0]
-                im = struct.unpack('>d', im_be)[0]
+                re = struct.unpack('>d', bytes(re_be))[0]
+                im = struct.unpack('>d', bytes(im_be))[0]
                 wf[i] = complex(re, im)
 
             return wf, mem
