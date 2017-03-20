@@ -21,8 +21,8 @@ Module for creating and defining parametric programs.
 import inspect
 from copy import copy
 
-from quilbase import Slot
-from quil import Program
+from .quilbase import Slot
+from .quil import Program
 
 
 def argument_count(thing):
