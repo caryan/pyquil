@@ -15,6 +15,8 @@
 #    limitations under the License.
 ##############################################################################
 
+from __future__ import print_function
+
 import pyquil.forest as qvm_endpoint
 from pyquil.quil import Program
 from pyquil.quilbase import DirectQubit
@@ -279,7 +281,7 @@ def test_define_qft():
 
     prog = state_prep + qft3(0, 1, 2)
     output = prog.out()
-    print output
+    print(output)
     assert output == 'X 0\nH 2\nCPHASE(1.5707963267948966) 1 2\nH 1\nCPHASE(0.7853981633974483) 0 ' \
                      '2\nCPHASE(1.5707963267948966) 0 1\nH 0\nSWAP 0 2\n'
 
@@ -312,7 +314,7 @@ def test_if_option():
 
 def test_alloc_free():
     p = Program()
-    print p.resource_manager.in_use
+    print(p.resource_manager.in_use)
     q1 = p.alloc()
     p.inst(H(q1))
     p.free(q1)
