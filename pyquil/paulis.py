@@ -513,8 +513,8 @@ def suzuki_trotter(trotter_order, trotter_steps):
                         (p2/2, 0), (p2, 1), (p2/2, 0),
                         (p1/2, 0), (p1, 1), (p1/2, 0)]}
 
-    order_slices = map(lambda x: (x[0]/float(trotter_steps), x[1]),
-                       trotter_dict[trotter_order])
+    order_slices = list(map(lambda x: (x[0]/float(trotter_steps), x[1]),
+                       trotter_dict[trotter_order]))
 
     order_slices = order_slices * trotter_steps
     return order_slices

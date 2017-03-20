@@ -51,7 +51,7 @@ class Program(InstructionGroup):
         if isinstance(other, Program):
             p = Program()
             p.defined_gates = self.defined_gates + other.defined_gates
-            p.actions = self.actions + other.actions
+            p.actions = self.actions + list(other.actions)
             p.resource_manager = merge_resource_managers(self.resource_manager,
                                                          other.resource_manager)
             return p

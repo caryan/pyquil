@@ -156,21 +156,21 @@ def test_pauliop_inputs():
 def test_pauli_sum():
     q_plus = 0.5 * PauliTerm('X', 0) + 0.5j * PauliTerm('Y', 0)
     the_sum = q_plus * PauliSum([PauliTerm('X', 0)])
-    term_strings = map(lambda x: str(x), the_sum.terms)
+    term_strings = list(map(lambda x: str(x), the_sum.terms))
     assert '0.5*I' in term_strings
     assert '(0.5+0j)*Z0' in term_strings
     assert len(term_strings) == 2
     assert len(the_sum.terms) == 2
 
     the_sum = q_plus * PauliTerm('X', 0)
-    term_strings = map(lambda x: str(x), the_sum.terms)
+    term_strings = list(map(lambda x: str(x), the_sum.terms))
     assert '0.5*I' in term_strings
     assert '(0.5+0j)*Z0' in term_strings
     assert len(term_strings) == 2
     assert len(the_sum.terms) == 2
 
     the_sum = PauliTerm('X', 0) * q_plus
-    term_strings = map(lambda x: str(x), the_sum.terms)
+    term_strings = list(map(lambda x: str(x), the_sum.terms))
     assert '0.5*I' in term_strings
     assert '(-0.5+0j)*Z0' in term_strings
     assert len(term_strings) == 2
